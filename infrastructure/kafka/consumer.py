@@ -35,7 +35,7 @@ def run_consumer(listener):
 
                 listener["function"](data)
 
-                consumer.commit(msg)
+                consumer.commit()
 
             except Exception as e:
                 print("Processing failed:", e)

@@ -1,4 +1,6 @@
 from contextlib import asynccontextmanager
+
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -9,7 +11,7 @@ from infrastructure.db.database import engine
 from infrastructure.kafka.consumer import start_kafka_consumers
 from infrastructure.kafka.loader import load_consumers
 
-
+load_dotenv("../.env.dev")
 # -------------------------------
 # Lifespan (startup/shutdown)
 # -------------------------------
@@ -83,3 +85,7 @@ async def root():
         "env": settings.ENV,
         "status": "running"
     }
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("main:app", reload=False, log_level="debug")

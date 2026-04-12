@@ -18,6 +18,10 @@ class Settings(BaseSettings):
     #kafka
     KAFKA_BOOTSTRAP_SERVERS: str
 
+    #redis
+    REDIS_HOST: str
+    REDIS_PORT: int
+
     ENV: str
 
     class Config:

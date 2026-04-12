@@ -1,4 +1,6 @@
 import logging
+from functools import lru_cache
+
 import boto3
 from botocore.exceptions import ClientError, EndpointConnectionError
 from infrastructure.config.settings import settings
@@ -8,6 +10,9 @@ import time
 
 logger = logging.getLogger("s3_client")
 logger.setLevel(logging.INFO)  # or DEBUG in dev
+
+
+
 
 
 class S3Client:
